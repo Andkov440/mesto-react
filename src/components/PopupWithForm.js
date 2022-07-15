@@ -1,5 +1,3 @@
-import '../index.css';
-
 export default function PopupWithForm(props) {
   const {name, title, buttonTitle, isOpen, onClose, children} = props;
 

@@ -1,8 +1,7 @@
 import React from 'react';
 import Card from './Card';
-import '../index.css';
 import avatar from '../img/kusto.jpg';
-import {api}  from '../utils/Api';
+import {api}  from '../utils/api';
 
 export default function Main(props) {
   const [userName, setUserName] = React.useState('Жак-Ив Кусто');
@@ -22,7 +21,7 @@ export default function Main(props) {
         .catch((err) => {
             console.log(err);
         });
-}, []);
+  }, []);
   
   return (
     <main className="main">
