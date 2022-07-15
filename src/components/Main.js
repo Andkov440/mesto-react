@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import avatar from '../img/kusto.jpg';
-import {api}  from '../utils/api';
+import {api}  from '../utils/api.js';
 
 export default function Main(props) {
   const [userName, setUserName] = React.useState('Жак-Ив Кусто');
