@@ -99,6 +99,6 @@ export const api = new Api({
   url: `${serverConfig.url}/${serverConfig.cohort}`,
   headers: {
     "Content-type": "application/json",
-    authorization: `${serverConfig.token}`,
-  },
+    authorization: `${serverConfig.token}`
+  }
 });
