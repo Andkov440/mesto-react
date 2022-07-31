@@ -1,0 +1,63 @@
+import React from "react";
+import PopupWithForm from "./PopupWithForm";
+
+export default function AddPlacePopup(props) {
+
+  const [title, setTitle] = React.useState('');
+  const [link, setLink] = React.useState('');
+
+  const handleTitleChange = (evt) => {
+    setTitle(evt.target.value);
+  }
+
+  const handleLinkChange = (evt) => {
+    setLink(evt.target.value);
+  }
+
+    const handleAddPlaceSubmit = (evt) => {
+        evt.preventDefault();
+
+        props.onAddPlace({
+          name: title,
+          link: link,
+        });
+        
+      } 
+  return (
+    <PopupWithForm
+      name="add"
+      title="Новое место"
+      buttonTitle="Создать"
+      isOpen={props.isOpen}
+      onClose={props.onClose}
+      onSubmit={handleAddPlaceSubmit}
+    >
+      <label className="popup__label">
+        <input
+          type="text"
+          id="title"
+          className="popup__input popup__caption"
+          name="card-name"
+          placeholder="Название"
+          minLength="2"
+          maxLength="30"
+          required
+          onChange={handleTitleChange}
+        />
+        <span id="title-error" className="error"></span>
+      </label>
+      <label className="popup__label">
+        <input
+          type="url"
+          id="url-add"
+          className="popup__input popup__url"
+          name="card-link"
+          placeholder="Ссылка на картинку"
+          required
+          onChange={handleLinkChange}
+        />
+        <span id="url-add-error" className="error"></span>
+      </label>
+    </PopupWithForm>
+  );
+}
