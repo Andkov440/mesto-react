@@ -2,27 +2,30 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function AddPlacePopup(props) {
+  const [title, setTitle] = React.useState("");
+  const [link, setLink] = React.useState("");
 
-  const [title, setTitle] = React.useState('');
-  const [link, setLink] = React.useState('');
+  React.useEffect(() => {
+    setTitle("");
+    setLink("");
+  }, [props.isOpen]);
 
   const handleTitleChange = (evt) => {
     setTitle(evt.target.value);
-  }
+  };
 
   const handleLinkChange = (evt) => {
     setLink(evt.target.value);
-  }
+  };
 
-    const handleAddPlaceSubmit = (evt) => {
-        evt.preventDefault();
+  const handleAddPlaceSubmit = (evt) => {
+    evt.preventDefault();
 
-        props.onAddPlace({
-          name: title,
-          link: link,
-        });
-        
-      } 
+    props.onAddPlace({
+      name: title,
+      link: link,
+    });
+  };
   return (
     <PopupWithForm
       name="add"
@@ -43,6 +46,7 @@ export default function AddPlacePopup(props) {
           maxLength="30"
           required
           onChange={handleTitleChange}
+          value={title || ""}
         />
         <span id="title-error" className="error"></span>
       </label>
@@ -55,6 +59,7 @@ export default function AddPlacePopup(props) {
           placeholder="Ссылка на картинку"
           required
           onChange={handleLinkChange}
+          value={link || ""}
         />
         <span id="url-add-error" className="error"></span>
       </label>

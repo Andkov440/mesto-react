@@ -25,7 +25,7 @@ export default function Main(props) {
             onClick={props.onEditProfile}
           ></button>
         </div>
-        <p className="profile__subtitle">{currentUser.description}</p>
+        <p className="profile__subtitle">{currentUser.about}</p>
         <button
           type="button"
           className="profile__add button"
@@ -34,17 +34,16 @@ export default function Main(props) {
       </section>
       <section className="photo">
         {props.cards.map((item) => (
-          <figure className="photo__item" key={item._id}>
-            <Card
-              card={item}
-              name={item.name}
-              link={item.link}
-              likes={item.likes.length}
-              onCardClick={props.onCardClick}
-              onCardLike={props.onCardLike}
-              onCardDelete={props.onCardDelete}
-            />
-          </figure>
+          <Card
+            key={item._id}
+            card={item}
+            name={item.name}
+            link={item.link}
+            likes={item.likes.length}
+            onCardClick={props.onCardClick}
+            onCardLike={props.onCardLike}
+            onCardDelete={props.onCardDelete}
+          />
         ))}
       </section>
     </main>
